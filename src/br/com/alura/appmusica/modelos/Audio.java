@@ -4,17 +4,24 @@ public class Audio {
     protected String titulo;
     protected int duracaoEmMinutos;
     private int totalDeReproducao;
-    private int curtidas;
-
-    private boolean tocando;
+    private int totalCurtidas;
+    private int classicicacao;
+    private static boolean tocando;
 
     protected boolean isTocando() {
-        return tocando;
+        return Audio.tocando;
     }
-//classificação
 
     public void curtir() {
-        this.curtidas++;
+        this.totalCurtidas++;
+    }
+
+    public void reproduz(){
+        this.totalDeReproducao++;
+    }
+
+    public int getClassicicacao() {
+        return classicicacao;
     }
 
     public void setTitulo(String titulo) {
@@ -37,7 +44,7 @@ public class Audio {
         return totalDeReproducao;
     }
 
-    public int getCurtidas() {
-        return curtidas;
+    public int getTotalCurtidas() {
+        return totalCurtidas;
     }
 }

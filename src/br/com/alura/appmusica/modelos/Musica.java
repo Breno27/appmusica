@@ -5,6 +5,9 @@ import br.com.alura.appmusica.operacoes.Controlador;
 public class Musica extends Audio implements Controlador {
     private String compositor;
     private String grupo;
+    /*
+    * album genero com getters e settes
+    * */
 
     public Musica(String titulo, int duracao, String compositor) {
         setTitulo(titulo);
@@ -17,6 +20,8 @@ public class Musica extends Audio implements Controlador {
         System.out.println("compositor: " + this.compositor);
         if (this.grupo != null) System.out.println("grupo: " + this.grupo);
         System.out.println("duracao: " + this.duracaoEmMinutos);
+        System.out.println("Curtidas: " + getTotalCurtidas());
+        System.out.println("Reproduções: " + getTotalDeReproducao());
     }
 
     public String getCompositor() {
@@ -33,6 +38,11 @@ public class Musica extends Audio implements Controlador {
 
     public void setGrupo(String grupo) {
         this.grupo = grupo;
+    }
+
+    @Override
+    public int getClassicicacao() {
+        return this.getTotalDeReproducao() > 2000 ? 10 : 7;
     }
 
     @Override

@@ -18,10 +18,10 @@ public class MusicaTeste {
         }
 
         for (int i = 0; i < 1000; i++) {
-            musicaUm.reproduz();
+            musicaUm.contabilizaReproducao();
         }
         for (int i = 0; i < 2100; i++) {
-            musicaDois.reproduz();
+            musicaDois.contabilizaReproducao();
         }
 
         musicaUm.exibeDetalhes();

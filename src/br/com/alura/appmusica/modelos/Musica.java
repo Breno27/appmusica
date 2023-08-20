@@ -1,6 +1,7 @@
 package br.com.alura.appmusica.modelos;
 
 import br.com.alura.appmusica.operacoes.Controlador;
+import br.com.alura.appmusica.operacoes.StatusReproducao;
 
 public class Musica extends Audio implements Controlador {
     private String compositor;
@@ -16,10 +17,10 @@ public class Musica extends Audio implements Controlador {
     }
 
     public void exibeDetalhes() {
-        System.out.println("título: " + this.titulo);
+        System.out.println("título: " + getTitulo());
         System.out.println("compositor: " + this.compositor);
         if (this.grupo != null) System.out.println("grupo: " + this.grupo);
-        System.out.println("duracao: " + this.duracaoEmMinutos);
+        System.out.println("duracao: " + getDuracaoEmMinutos());
         System.out.println("Curtidas: " + getTotalCurtidas());
         System.out.println("Reproduções: " + getTotalDeReproducao());
     }
@@ -47,15 +48,20 @@ public class Musica extends Audio implements Controlador {
 
     @Override
     public String reproduzir() {
-        if (this.grupo != null) {
-            return "Reproduzindo :" + this.getTitulo() + "de: " + this.grupo;
-        } else {
-            return "Reproduzindo :" + this.getTitulo() + "de: " + this.compositor;
+        contabilizaReproducao();
+        if (!StatusReproducao.isReproduzindo()){
+            StatusReproducao.iniciarReproducao();
         }
+        return "Reproduzindo: " + this.getTitulo() + "de: " + this.compositor;
     }
 
     @Override
     public String pausar() {
-        return isTocando() ? "Pause" : "Não há musica em reprodução";
+        if (StatusReproducao.isReproduzindo()){
+            StatusReproducao.pararReproducao();
+            return "Musica Pausada";
+        } else {
+            return "Não há musica em reprodução";
+        }
     }
 }

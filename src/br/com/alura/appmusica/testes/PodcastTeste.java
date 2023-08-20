@@ -18,10 +18,10 @@ public class PodcastTeste {
         }
 
         for (int i = 0; i < 1000; i++) {
-            podcastUm.reproduz();
+            podcastUm.contabilizaReproducao();
         }
         for (int i = 0; i < 1500; i++) {
-            podcastDois.reproduz();
+            podcastDois.contabilizaReproducao();
         }
 
         podcastUm.exibeDetalhes();

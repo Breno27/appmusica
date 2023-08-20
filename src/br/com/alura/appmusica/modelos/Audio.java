@@ -1,27 +1,24 @@
 package br.com.alura.appmusica.modelos;
 
+import br.com.alura.appmusica.operacoes.StatusReproducao;
+
 public class Audio {
-    protected String titulo;
-    protected int duracaoEmMinutos;
+    private String titulo;
+    private int duracaoEmMinutos;
     private int totalDeReproducao;
     private int totalCurtidas;
     private int classicicacao;
-    private static boolean tocando;
-
-    protected boolean isTocando() {
-        return Audio.tocando;
-    }
 
     public void curtir() {
         this.totalCurtidas++;
     }
 
-    public void reproduz(){
+    public void contabilizaReproducao(){
         this.totalDeReproducao++;
     }
 
     public int getClassicicacao() {
-        return classicicacao;
+        return this.classicicacao;
     }
 
     public void setTitulo(String titulo) {
